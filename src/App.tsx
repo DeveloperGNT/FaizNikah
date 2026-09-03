@@ -238,6 +238,7 @@ export default function App() {
       {/* Global Dossier Detail Modal */}
       <ProfileModal 
         profile={selectedProfile}
+        isOpen={Boolean(selectedProfile)}
         onClose={() => setSelectedProfile(null)}
         isShortlisted={selectedProfile ? shortlistedIds.includes(selectedProfile.id) : false}
         onToggleShortlist={handleToggleShortlist}

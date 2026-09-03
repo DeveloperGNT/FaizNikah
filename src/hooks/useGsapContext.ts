@@ -18,24 +18,21 @@ export function useGsapContext(
   useIsomorphicLayoutEffect(() => {
     if (!containerRef.current) return;
 
-    let ctx: gsap.Context | null = null;
-    let rafId: number | null = null;
+    // Initialize synchronously in layout effect to set initial states prior to paint (prevents FOUC)
+    const ctx = gsap.context((self) => {
+      if (containerRef.current) {
+        animationCallback(self, containerRef.current);
+      }
+    }, containerRef);
 
-    // requestAnimationFrame ensures DOM layout dimensions and fonts are painted
-    // preventing ScrollTrigger from calculating stuck or offset positions
-    rafId = requestAnimationFrame(() => {
-      if (!containerRef.current) return;
-      ctx = gsap.context((self) => {
-        if (containerRef.current) {
-          animationCallback(self, containerRef.current);
-        }
-      }, containerRef);
+    // Refresh ScrollTrigger after paint to ensure accurate layout metrics
+    const rafId = requestAnimationFrame(() => {
       ScrollTrigger.refresh();
     });
 
     return () => {
-      if (rafId !== null) cancelAnimationFrame(rafId);
-      if (ctx) ctx.revert();
+      cancelAnimationFrame(rafId);
+      ctx.revert();
     };
   }, dependencies);
 

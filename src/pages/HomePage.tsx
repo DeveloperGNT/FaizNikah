@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { 
-  ShieldCheck, 
-  Sparkles, 
-  ArrowRight, 
-  Heart, 
-  CheckCircle, 
-  Eye, 
-  BookOpen, 
-  Building, 
-  Phone, 
+import {
+  ShieldCheck,
+  Sparkles,
+  ArrowRight,
+  Heart,
+  CheckCircle,
+  Eye,
+  BookOpen,
+  Building,
+  Phone,
   Lock,
   Search,
   Filter,
@@ -19,12 +19,12 @@ import {
   Calendar,
   Check
 } from 'lucide-react';
-import { 
-  FOUNDATION_STATS, 
-  PROFILES, 
-  OFFICES, 
-  BLOG_ARTICLES, 
-  SUCCESS_STORIES, 
+import {
+  FOUNDATION_STATS,
+  PROFILES,
+  OFFICES,
+  BLOG_ARTICLES,
+  SUCCESS_STORIES,
   TEAM_MEMBERS
 } from '../data/faizNikahData';
 import { Profile, CommunityType } from '../types';
@@ -61,115 +61,111 @@ export const HomePage: React.FC<HomePageProps> = ({
     return true;
   }).slice(0, 4);
 
-  // GSAP Choreographed Motion System
+  // Premium Agency-Grade GSAP Choreographed Motion Engine
   const containerRef = useGsapContext(() => {
     if (isReducedMotion()) return;
 
-    // 1. HERO SIGNATURE CINEMATIC TIMELINE
-    const heroTl = gsap.timeline({ delay: 0.1 });
+    const isMobile = isMobileScreen();
+
+    // 1. HERO SIGNATURE CINEMATIC ENTRANCE TIMELINE
+    const heroTl = gsap.timeline({
+      defaults: { ease: EASINGS.editorial }
+    });
+
     heroTl
       .fromTo(
         '.hero-eyebrow',
-        { opacity: 0, y: 18 },
-        { opacity: 1, y: 0, duration: 0.65, ease: EASINGS.editorial }
+        { autoAlpha: 0, y: isMobile ? 12 : 18 },
+        { autoAlpha: 1, y: 0, duration: 0.65 }
       )
       .fromTo(
         '.hero-headline',
-        { opacity: 0, y: 36 },
-        { opacity: 1, y: 0, duration: 0.85, ease: EASINGS.cinematic },
-        '-=0.4'
+        { autoAlpha: 0, y: isMobile ? 20 : 32 },
+        { autoAlpha: 1, y: 0, duration: 0.85, ease: EASINGS.cinematic },
+        '-=0.45'
       )
       .fromTo(
         '.hero-paragraph',
-        { opacity: 0, y: 22 },
-        { opacity: 1, y: 0, duration: 0.7, ease: EASINGS.editorial },
+        { autoAlpha: 0, y: isMobile ? 14 : 20 },
+        { autoAlpha: 1, y: 0, duration: 0.7 },
         '-=0.55'
       )
       .fromTo(
         '.hero-cta-btn',
-        { opacity: 0, y: 16 },
-        { opacity: 1, y: 0, stagger: 0.1, duration: 0.6, ease: EASINGS.editorial },
+        { autoAlpha: 0, y: 14 },
+        { autoAlpha: 1, y: 0, stagger: 0.1, duration: 0.6 },
         '-=0.45'
       )
       .fromTo(
         '.hero-trust-item',
-        { opacity: 0, y: 14 },
-        { opacity: 1, y: 0, stagger: 0.08, duration: 0.55, ease: EASINGS.smooth },
+        { autoAlpha: 0, y: 10 },
+        { autoAlpha: 1, y: 0, stagger: 0.08, duration: 0.55, ease: EASINGS.smooth },
         '-=0.35'
       )
       .fromTo(
         '.hero-arch-frame',
-        { clipPath: 'inset(14% 0% 0% 0%)', opacity: 0 },
-        { clipPath: 'inset(0% 0% 0% 0%)', opacity: 1, duration: 1.1, ease: EASINGS.editorial },
-        '-=0.85'
+        { autoAlpha: 0, clipPath: 'inset(10% 0% 0% 0%)' },
+        { autoAlpha: 1, clipPath: 'inset(0% 0% 0% 0%)', duration: 1.05, ease: EASINGS.editorial },
+        '-=0.9'
       )
       .fromTo(
         '.hero-arch-img',
         { scale: 1.08 },
-        { scale: 1, duration: 1.3, ease: EASINGS.cinematic },
-        '-=1.1'
+        { scale: 1, duration: 1.25, ease: EASINGS.cinematic },
+        '-=1.0'
       )
       .fromTo(
         '.hero-floating-card',
-        { opacity: 0, y: 24, scale: 0.94 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.75, ease: EASINGS.editorial },
+        { autoAlpha: 0, y: 20, scale: 0.94 },
+        { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, ease: EASINGS.editorial },
         '-=0.5'
       );
 
-    // Hero floating card count-up animation
+    // Hero Floating Card Count-Up (5,600+)
     const heroCountObj = { val: 0 };
     gsap.to(heroCountObj, {
       val: 5600,
       duration: 1.6,
       ease: 'power2.out',
-      delay: 0.45,
+      delay: 0.35,
       onUpdate: () => {
         const el = document.getElementById('hero-count-val');
         if (el) el.textContent = `${Math.round(heroCountObj.val).toLocaleString()}+`;
       }
     });
 
-    // Subtle scroll parallax on the arch image
-    if (!isMobileScreen()) {
-      gsap.fromTo(
-        '.hero-arch-img',
-        { y: -10, force3D: true },
-        {
-          y: 18,
-          ease: 'none',
-          immediateRender: false,
-          scrollTrigger: {
-            trigger: '.hero-arch-frame',
-            start: 'top 60%',
-            end: 'bottom top',
-            scrub: 1.0,
-            fastScrollEnd: true
-          }
+    // Subtle Parallax on Hero Image (Desktop only)
+    if (!isMobile) {
+      gsap.to('.hero-arch-img', {
+        y: 18,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero-arch-frame',
+          start: 'top 70%',
+          end: 'bottom top',
+          scrub: 1.2
         }
-      );
+      });
     }
 
-    // 2. STATS SECTION REVEAL & COUNT-UP
+    // 2. FOUNDATION STATS SECTION & COUNT-UPS
     gsap.fromTo(
       '.stat-item',
-      { opacity: 0, y: 24, force3D: true },
+      { autoAlpha: 0, y: isMobile ? 16 : 26 },
       {
-        opacity: 1,
+        autoAlpha: 1,
         y: 0,
         stagger: 0.08,
         duration: 0.75,
         ease: EASINGS.editorial,
-        immediateRender: false,
         scrollTrigger: {
           trigger: '#foundation-stats-section',
-          start: 'top 88%',
-          once: true,
-          fastScrollEnd: true
+          start: 'top 86%',
+          once: true
         }
       }
     );
 
-    // Count-up for foundation stats
     const statsTargets = [
       { id: 'stat-val-0', num: 5600, suffix: '+' },
       { id: 'stat-val-1', num: 5000, suffix: '+' },
@@ -183,11 +179,11 @@ export const HomePage: React.FC<HomePageProps> = ({
       const counter = { val: 0 };
       gsap.to(counter, {
         val: target.num,
-        duration: 1.5,
+        duration: 1.6,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: '#foundation-stats-section',
-          start: 'top 88%',
+          start: 'top 86%',
           once: true
         },
         onUpdate: () => {
@@ -199,37 +195,34 @@ export const HomePage: React.FC<HomePageProps> = ({
     // 3. TARGETED COMMUNITY STREAMS
     gsap.fromTo(
       '#community-streams-header',
-      { opacity: 0, y: 24, force3D: true },
+      { autoAlpha: 0, y: isMobile ? 16 : 24 },
       {
-        opacity: 1,
+        autoAlpha: 1,
         y: 0,
         duration: 0.75,
         ease: EASINGS.editorial,
-        immediateRender: false,
         scrollTrigger: {
           trigger: '#community-streams-header',
           start: 'top 88%',
-          once: true,
-          fastScrollEnd: true
+          once: true
         }
       }
     );
 
     gsap.fromTo(
       '.community-stream-card',
-      { opacity: 0, y: 30, force3D: true },
+      { autoAlpha: 0, y: isMobile ? 20 : 32 },
       {
-        opacity: 1,
+        autoAlpha: 1,
         y: 0,
-        stagger: 0.1,
-        duration: 0.75,
+        stagger: 0.12,
+        duration: 0.8,
         ease: EASINGS.editorial,
-        immediateRender: false,
+        clearProps: 'transform',
         scrollTrigger: {
           trigger: '#community-streams-grid',
-          start: 'top 85%',
-          once: true,
-          fastScrollEnd: true
+          start: 'top 86%',
+          once: true
         }
       }
     );
@@ -237,37 +230,50 @@ export const HomePage: React.FC<HomePageProps> = ({
     // 4. CURATED DOSSIERS GRID & FILTER
     gsap.fromTo(
       '#dossiers-header',
-      { opacity: 0, y: 24, force3D: true },
+      { autoAlpha: 0, y: isMobile ? 16 : 24 },
       {
-        opacity: 1,
+        autoAlpha: 1,
         y: 0,
         duration: 0.75,
         ease: EASINGS.editorial,
-        immediateRender: false,
         scrollTrigger: {
           trigger: '#dossiers-header',
           start: 'top 88%',
-          once: true,
-          fastScrollEnd: true
+          once: true
+        }
+      }
+    );
+
+    gsap.fromTo(
+      '#dossiers-filter-sidebar',
+      { autoAlpha: 0, y: isMobile ? 18 : 28 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.75,
+        ease: EASINGS.editorial,
+        scrollTrigger: {
+          trigger: '#profiles-section',
+          start: 'top 84%',
+          once: true
         }
       }
     );
 
     gsap.fromTo(
       '.dossier-card',
-      { opacity: 0, y: 30, force3D: true },
+      { autoAlpha: 0, y: isMobile ? 18 : 28 },
       {
-        opacity: 1,
+        autoAlpha: 1,
         y: 0,
         stagger: 0.08,
         duration: 0.75,
         ease: EASINGS.editorial,
-        immediateRender: false,
+        clearProps: 'transform',
         scrollTrigger: {
           trigger: '#dossier-cards-grid',
-          start: 'top 85%',
-          once: true,
-          fastScrollEnd: true
+          start: 'top 86%',
+          once: true
         }
       }
     );
@@ -275,37 +281,50 @@ export const HomePage: React.FC<HomePageProps> = ({
     // 5. SACRED MATRIMONIAL JOURNEY (FOUR PILLARS)
     gsap.fromTo(
       '#journey-header',
-      { opacity: 0, y: 24, force3D: true },
+      { autoAlpha: 0, y: isMobile ? 16 : 24 },
       {
-        opacity: 1,
+        autoAlpha: 1,
         y: 0,
         duration: 0.75,
         ease: EASINGS.editorial,
-        immediateRender: false,
         scrollTrigger: {
           trigger: '#journey-header',
           start: 'top 88%',
-          once: true,
-          fastScrollEnd: true
+          once: true
         }
       }
     );
 
     gsap.fromTo(
       '.pillar-step',
-      { opacity: 0, y: 30, force3D: true },
+      { autoAlpha: 0, y: isMobile ? 20 : 30 },
       {
-        opacity: 1,
+        autoAlpha: 1,
         y: 0,
         stagger: 0.1,
         duration: 0.75,
         ease: EASINGS.editorial,
-        immediateRender: false,
+        clearProps: 'transform',
         scrollTrigger: {
           trigger: '#journey-pillars-grid',
-          start: 'top 85%',
-          once: true,
-          fastScrollEnd: true
+          start: 'top 86%',
+          once: true
+        }
+      }
+    );
+
+    gsap.fromTo(
+      '#journey-pledge',
+      { autoAlpha: 0, y: isMobile ? 14 : 22 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.7,
+        ease: EASINGS.editorial,
+        scrollTrigger: {
+          trigger: '#journey-pledge',
+          start: 'top 90%',
+          once: true
         }
       }
     );
@@ -313,36 +332,32 @@ export const HomePage: React.FC<HomePageProps> = ({
     // 6. SUCCESS REFLECTIONS (Obsidian dark section)
     gsap.fromTo(
       '#success-reflections-quote',
-      { opacity: 0, y: 30, force3D: true },
+      { autoAlpha: 0, y: isMobile ? 20 : 32 },
       {
-        opacity: 1,
+        autoAlpha: 1,
         y: 0,
         duration: 0.85,
         ease: EASINGS.cinematic,
-        immediateRender: false,
         scrollTrigger: {
           trigger: '#success-reflections',
           start: 'top 82%',
-          once: true,
-          fastScrollEnd: true
+          once: true
         }
       }
     );
 
     gsap.fromTo(
       '#counselor-council-card',
-      { opacity: 0, y: 24, force3D: true },
+      { autoAlpha: 0, y: isMobile ? 18 : 28 },
       {
-        opacity: 1,
+        autoAlpha: 1,
         y: 0,
         duration: 0.8,
         ease: EASINGS.editorial,
-        immediateRender: false,
         scrollTrigger: {
           trigger: '#counselor-council-card',
           start: 'top 84%',
-          once: true,
-          fastScrollEnd: true
+          once: true
         }
       }
     );
@@ -350,37 +365,34 @@ export const HomePage: React.FC<HomePageProps> = ({
     // 7. COUNSELING & GUIDANCE ARTICLES
     gsap.fromTo(
       '#guidance-header',
-      { opacity: 0, y: 24, force3D: true },
+      { autoAlpha: 0, y: isMobile ? 16 : 24 },
       {
-        opacity: 1,
+        autoAlpha: 1,
         y: 0,
         duration: 0.75,
         ease: EASINGS.editorial,
-        immediateRender: false,
         scrollTrigger: {
           trigger: '#guidance-header',
           start: 'top 88%',
-          once: true,
-          fastScrollEnd: true
+          once: true
         }
       }
     );
 
     gsap.fromTo(
       '.article-card',
-      { opacity: 0, y: 30, force3D: true },
+      { autoAlpha: 0, y: isMobile ? 20 : 30 },
       {
-        opacity: 1,
+        autoAlpha: 1,
         y: 0,
-        stagger: 0.09,
+        stagger: 0.1,
         duration: 0.75,
         ease: EASINGS.editorial,
-        immediateRender: false,
+        clearProps: 'transform',
         scrollTrigger: {
           trigger: '#guidance-articles-grid',
-          start: 'top 85%',
-          once: true,
-          fastScrollEnd: true
+          start: 'top 86%',
+          once: true
         }
       }
     );
@@ -388,19 +400,17 @@ export const HomePage: React.FC<HomePageProps> = ({
     // 8. MEMBERSHIP COVENANT CARD
     gsap.fromTo(
       '#pricing-covenant-card',
-      { opacity: 0, y: 30, scale: 0.98, force3D: true },
+      { autoAlpha: 0, y: isMobile ? 20 : 32, scale: 0.98 },
       {
-        opacity: 1,
+        autoAlpha: 1,
         y: 0,
         scale: 1,
         duration: 0.85,
         ease: EASINGS.cinematic,
-        immediateRender: false,
         scrollTrigger: {
           trigger: '#pricing-covenant-card',
           start: 'top 85%',
-          once: true,
-          fastScrollEnd: true
+          once: true
         }
       }
     );
@@ -408,37 +418,50 @@ export const HomePage: React.FC<HomePageProps> = ({
     // 9. REGIONAL BUREAUS
     gsap.fromTo(
       '#bureaus-header',
-      { opacity: 0, y: 24, force3D: true },
+      { autoAlpha: 0, y: isMobile ? 16 : 24 },
       {
-        opacity: 1,
+        autoAlpha: 1,
         y: 0,
         duration: 0.75,
         ease: EASINGS.editorial,
-        immediateRender: false,
         scrollTrigger: {
           trigger: '#bureaus-header',
           start: 'top 88%',
-          once: true,
-          fastScrollEnd: true
+          once: true
         }
       }
     );
 
     gsap.fromTo(
       '.bureau-card',
-      { opacity: 0, y: 28, force3D: true },
+      { autoAlpha: 0, y: isMobile ? 18 : 28 },
       {
-        opacity: 1,
+        autoAlpha: 1,
         y: 0,
         stagger: 0.08,
         duration: 0.75,
         ease: EASINGS.editorial,
-        immediateRender: false,
+        clearProps: 'transform',
         scrollTrigger: {
           trigger: '#bureaus-grid',
-          start: 'top 85%',
-          once: true,
-          fastScrollEnd: true
+          start: 'top 86%',
+          once: true
+        }
+      }
+    );
+
+    gsap.fromTo(
+      '#bureaus-cta-btn',
+      { autoAlpha: 0, y: 15 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.6,
+        ease: EASINGS.editorial,
+        scrollTrigger: {
+          trigger: '#bureaus-cta-btn',
+          start: 'top 92%',
+          once: true
         }
       }
     );
@@ -470,14 +493,14 @@ export const HomePage: React.FC<HomePageProps> = ({
 
               {/* Dual Primary Actions */}
               <div className="flex flex-wrap items-center gap-4 mb-10">
-                <button 
+                <button
                   onClick={() => onNavigate('find-partner')}
                   className="hero-cta-btn bg-[#0B4940] text-[#F7F4EA] font-semibold text-sm px-6 sm:px-7 py-3.5 rounded border border-[#14584C] hover:bg-[#14584C] transition-all shadow-[0_12px_24px_-8px_rgba(11,73,64,0.3)] flex items-center gap-2.5 active:scale-[0.99] group"
                 >
                   <Compass size={19} className="group-hover:rotate-45 transition-transform duration-300" />
                   <span>Explore Curated Dossiers</span>
                 </button>
-                <button 
+                <button
                   onClick={() => onOpenCounselor()}
                   className="hero-cta-btn bg-[#F7F4EA] text-[#11150D] border border-[#667047]/60 font-semibold text-sm px-6 py-3.5 rounded hover:bg-[#E8E4D6]/50 transition-colors flex items-center gap-2 active:scale-[0.99] group"
                 >
@@ -507,19 +530,19 @@ export const HomePage: React.FC<HomePageProps> = ({
             <div className="lg:col-span-5 relative pl-0 lg:pl-4">
               <div className="hero-arch-frame relative z-10 p-3 bg-[#E8E4D6] border border-[#C8C5B4]/70 shadow-[0_20px_48px_-12px_rgba(17,21,13,0.12)] rounded-t-[140px] rounded-b-lg">
                 <div className="overflow-hidden arch-mask h-[440px] sm:h-[480px] bg-[#C8C5B4]/20 relative">
-                  <img 
-                    src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1000" 
-                    alt="Pious Muslim Bride and Groom in dignified Sunnah wedding attire" 
+                  <img
+                    src="/assets/hero-couple-BSsNtkr_.jpg"
+                    alt="Pious Muslim Bride and Groom in dignified Sunnah wedding attire"
                     className="hero-arch-img w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#11150D]/75 via-transparent to-transparent"></div>
-                  
+
                   <div className="absolute bottom-6 left-6 right-6 text-[#F7F4EA]">
                     <div className="text-[11px] font-semibold tracking-widest uppercase text-[#B3A16A] mb-1">
                       Pious Covenant
                     </div>
                     <div className="font-serif text-lg sm:text-xl italic font-normal">
-                      "And He placed between you affection and mercy."
+                      {/* "And He placed between you affection and mercy." */}
                     </div>
                     <div className="text-[11px] text-[#C8C5B4] mt-1">
                       Surah Ar-Rum 30:21
@@ -532,9 +555,9 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="hero-floating-card absolute -bottom-6 -left-2 sm:-left-6 z-20 bg-[#F7F4EA] border border-[#C8C5B4]/80 rounded-lg p-4 sm:p-5 shadow-[0_16px_36px_-8px_rgba(17,21,13,0.15)] max-w-[250px]">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-10 h-10 rounded-lg overflow-hidden border border-[#C8C5B4]/80 bg-[#F7F4EA] flex items-center justify-center p-0.5 shadow-sm flex-shrink-0">
-                    <img 
-                      src="/logo.png" 
-                      alt="FaizNikah Emblem" 
+                    <img
+                      src="/logo.png"
+                      alt="FaizNikah Emblem"
                       className="w-full h-full object-contain"
                       referrerPolicy="no-referrer"
                     />
@@ -621,7 +644,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   </div>
                 </div>
               </div>
-              <button 
+              <button
                 onClick={() => onNavigate('find-partner', { community: 'Sunni' })}
                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0B4940] group-hover:text-[#14584C] transition-colors underline underline-offset-4 decoration-[#B3A16A] text-left"
               >
@@ -656,7 +679,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   </div>
                 </div>
               </div>
-              <button 
+              <button
                 onClick={() => onNavigate('find-partner', { community: 'Shia' })}
                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0B4940] group-hover:text-[#14584C] transition-colors underline underline-offset-4 decoration-[#B3A16A] text-left"
               >
@@ -691,7 +714,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   </div>
                 </div>
               </div>
-              <button 
+              <button
                 onClick={() => onNavigate('find-partner', { community: 'Bohra' })}
                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0B4940] group-hover:text-[#14584C] transition-colors underline underline-offset-4 decoration-[#B3A16A] text-left"
               >
@@ -725,7 +748,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <span className="w-2 h-2 rounded-full bg-[#526333] animate-pulse"></span>
                 <span>Counselors Active Today</span>
               </span>
-              <button 
+              <button
                 onClick={() => onNavigate('find-partner')}
                 className="font-semibold text-[#0B4940] hover:underline"
               >
@@ -736,13 +759,13 @@ export const HomePage: React.FC<HomePageProps> = ({
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Left Filter Sidebar */}
-            <aside className="lg:col-span-4 bg-[#E8E4D6]/50 border border-[#C8C5B4]/60 rounded-lg p-6 self-start space-y-5">
+            <aside id="dossiers-filter-sidebar" className="lg:col-span-4 bg-[#E8E4D6]/50 border border-[#C8C5B4]/60 rounded-lg p-6 self-start space-y-5">
               <div className="flex items-center justify-between pb-3 border-b border-[#C8C5B4]/40">
                 <h3 className="text-sm font-bold text-[#11150D] flex items-center gap-2">
                   <Filter size={16} />
                   <span>Refine Parameters</span>
                 </h3>
-                <button 
+                <button
                   onClick={() => {
                     setSelectedCommunity('All');
                     setSelectedDistrict('All');
@@ -760,7 +783,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <label className="block text-xs font-semibold text-[#11150D] mb-1.5">
                   Maslak / Community Tradition
                 </label>
-                <select 
+                <select
                   value={selectedCommunity}
                   onChange={(e) => setSelectedCommunity(e.target.value as CommunityType)}
                   className="w-full bg-[#F7F4EA] border border-[#C8C5B4] rounded px-3 py-2 text-xs text-[#191d14] focus:border-[#0B4940] focus:ring-0"
@@ -777,7 +800,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <label className="block text-xs font-semibold text-[#11150D] mb-1.5">
                   Location / Regional Bureau
                 </label>
-                <select 
+                <select
                   value={selectedDistrict}
                   onChange={(e) => setSelectedDistrict(e.target.value)}
                   className="w-full bg-[#F7F4EA] border border-[#C8C5B4] rounded px-3 py-2 text-xs text-[#191d14] focus:border-[#0B4940] focus:ring-0"
@@ -804,9 +827,9 @@ export const HomePage: React.FC<HomePageProps> = ({
               {/* Checkboxes */}
               <div className="pt-3 border-t border-[#C8C5B4]/40 space-y-2.5">
                 <label className="flex items-start gap-2.5 cursor-pointer">
-                  <input 
-                    type="checkbox" 
-                    checked={waliOnly} 
+                  <input
+                    type="checkbox"
+                    checked={waliOnly}
                     onChange={(e) => setWaliOnly(e.target.checked)}
                     className="mt-0.5 rounded text-[#0B4940] focus:ring-0 border-[#C8C5B4]"
                   />
@@ -817,9 +840,9 @@ export const HomePage: React.FC<HomePageProps> = ({
                 </label>
 
                 <label className="flex items-start gap-2.5 cursor-pointer">
-                  <input 
-                    type="checkbox" 
-                    checked={dowryOnly} 
+                  <input
+                    type="checkbox"
+                    checked={dowryOnly}
                     onChange={(e) => setDowryOnly(e.target.checked)}
                     className="mt-0.5 rounded text-[#0B4940] focus:ring-0 border-[#C8C5B4]"
                   />
@@ -830,7 +853,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 </label>
               </div>
 
-              <button 
+              <button
                 onClick={() => onNavigate('find-partner', { community: selectedCommunity })}
                 className="w-full bg-[#11150D] text-[#C8C5B4] hover:text-[#F7F4EA] py-2.5 rounded text-xs font-semibold transition-colors flex items-center justify-center gap-2"
               >
@@ -844,7 +867,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               {previewProfiles.map((p) => {
                 const isShortlisted = shortlistedIds.includes(p.id);
                 return (
-                  <div 
+                  <div
                     key={p.id}
                     className="dossier-card bg-[#E8E4D6]/40 border border-[#C8C5B4]/70 rounded-lg overflow-hidden flex flex-col justify-between hover:shadow-[0_16px_36px_-8px_rgba(17,21,13,0.12)] hover:-translate-y-1 transition-all duration-300 group"
                   >
@@ -856,7 +879,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                         </span>
                         <div className="flex items-center gap-2">
                           <span className="text-[11px] text-[#404946] font-mono">{p.id}</span>
-                          <button 
+                          <button
                             onClick={() => onToggleShortlist(p.id)}
                             className="text-[#404946] hover:text-rose-600 transition-colors"
                             title={isShortlisted ? 'Remove from shortlist' : 'Add to shortlist'}
@@ -868,8 +891,8 @@ export const HomePage: React.FC<HomePageProps> = ({
 
                       <div className="flex gap-4 mb-4">
                         <div className="w-20 h-24 rounded bg-[#C8C5B4]/30 overflow-hidden border border-[#C8C5B4] flex-shrink-0 relative">
-                          <img 
-                            src={p.photoUrl} 
+                          <img
+                            src={p.photoUrl}
                             alt={p.name}
                             className={`w-full h-full object-cover ${p.photoPrivacy === 'OnRequest' ? 'blur-sm scale-105' : ''}`}
                           />
@@ -914,7 +937,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                     </div>
 
                     <div className="px-5 pb-5 pt-0">
-                      <button 
+                      <button
                         onClick={() => onSelectProfile(p)}
                         className="w-full bg-[#F7F4EA] border border-[#0B4940]/40 text-[#0B4940] hover:bg-[#0B4940] hover:text-[#F7F4EA] py-2.5 rounded text-xs font-semibold transition-colors flex items-center justify-center gap-1.5"
                       >
@@ -1016,7 +1039,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 </p>
               </div>
             </div>
-            <button 
+            <button
               onClick={() => onNavigate('about')}
               className="text-xs font-semibold text-[#0B4940] hover:underline whitespace-nowrap"
             >
@@ -1069,7 +1092,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 ))}
               </div>
               <div className="mt-4 pt-3 border-t border-[#C8C5B4]/20">
-                <button 
+                <button
                   onClick={() => onNavigate('team')}
                   className="text-xs text-[#B3A16A] hover:underline flex items-center gap-1"
                 >
@@ -1094,7 +1117,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 Islamic Guidance &amp; Counselor Reflections
               </h2>
             </div>
-            <button 
+            <button
               onClick={() => onNavigate('blogs')}
               className="text-xs font-semibold text-[#0B4940] hover:underline flex items-center gap-1"
             >
@@ -1105,7 +1128,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
           <div id="guidance-articles-grid" className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {BLOG_ARTICLES.slice(0, 3).map((article) => (
-              <article 
+              <article
                 key={article.id}
                 className="article-card bg-[#E8E4D6]/30 border border-[#C8C5B4]/60 rounded-lg p-6 flex flex-col justify-between hover:border-[#0B4940]/40 hover:-translate-y-1 transition-all duration-300 group"
               >
@@ -1123,7 +1146,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
                 <div className="pt-4 border-t border-[#C8C5B4]/40 flex items-center justify-between text-xs">
                   <span className="text-[#404946] font-medium">{article.author}</span>
-                  <button 
+                  <button
                     onClick={() => onNavigate('blogs', { blogId: article.id })}
                     className="font-semibold text-[#0B4940] hover:underline"
                   >
@@ -1191,7 +1214,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="text-xs text-[#404946] text-center sm:text-left">
                 <span>Supports our Primary School, Sartaj Library &amp; Roti Bank initiatives.</span>
               </div>
-              <button 
+              <button
                 onClick={() => onNavigate('create-profile')}
                 className="w-full sm:w-auto bg-[#0B4940] text-[#F7F4EA] font-semibold text-xs px-8 py-3 rounded border border-[#14584C] hover:bg-[#14584C] transition-all shadow-[0_4px_16px_rgba(11,73,64,0.2)] flex items-center justify-center gap-2"
               >
@@ -1242,8 +1265,8 @@ export const HomePage: React.FC<HomePageProps> = ({
             ))}
           </div>
 
-          <div className="mt-12 text-center">
-            <button 
+          <div id="bureaus-cta-btn" className="mt-12 text-center">
+            <button
               onClick={() => onNavigate('contact')}
               className="inline-flex items-center gap-2 text-xs font-semibold text-[#0B4940] hover:underline"
             >

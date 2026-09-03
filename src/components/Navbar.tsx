@@ -242,265 +242,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </div>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-[14px] font-medium text-[#404946]">
-            
-            {/* 1. Find Partner Dropdown */}
-            <div 
-              className="desktop-nav-link relative"
-              onMouseEnter={() => handleMouseEnter('partner')}
-              onMouseLeave={handleMouseLeave}
-            >
-              <button 
-                onClick={() => handleNav('find-partner')}
-                className={`flex items-center gap-1.5 px-3 py-2 rounded-md transition-colors relative group ${
-                  currentPage === 'find-partner' 
-                    ? 'text-[#0B4940] font-semibold bg-[#E8E4D6]/70' 
-                    : 'hover:text-[#0B4940] hover:bg-[#E8E4D6]/40'
-                }`}
-                aria-expanded={activeDropdown === 'partner'}
-              >
-                <span>Find Partner</span>
-                <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === 'partner' ? 'rotate-180 text-[#0B4940]' : 'text-[#526333]'}`} />
-                {currentPage === 'find-partner' && (
-                  <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#0B4940] rounded-full"></span>
-                )}
-              </button>
-
-              {activeDropdown === 'partner' && (
-                <div className="absolute left-0 top-full pt-2 w-72 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                  <div className="bg-[#F7F4EA] border border-[#C8C5B4]/70 rounded-lg p-2.5 shadow-[0_16px_36px_-8px_rgba(17,21,13,0.14)] space-y-1">
-                    <div className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#526333]">
-                      Browse Matrimonial Dossiers
-                    </div>
-                    <button 
-                      onClick={() => handleNav('find-partner', { community: 'All' })}
-                      className="w-full text-left flex items-center justify-between p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <Users size={16} className="text-[#0B4940] group-hover:scale-110 transition-transform" />
-                        <div>
-                          <div className="text-sm font-medium text-[#11150D]">All Verified Dossiers</div>
-                          <div className="text-[11px] text-[#404946]/80">Across Maharashtra &amp; Pan-India</div>
-                        </div>
-                      </div>
-                      <span className="text-[10.5px] font-semibold text-[#526333] bg-[#E8E4D6] px-2 py-0.5 rounded">2,000+</span>
-                    </button>
-                    <button 
-                      onClick={() => handleNav('find-partner', { community: 'Sunni' })}
-                      className="w-full text-left flex items-center justify-between p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <UserCheck size={16} className="text-[#0B4940] group-hover:scale-110 transition-transform" />
-                        <div>
-                          <div className="text-sm font-medium text-[#11150D]">Sunni Muslim Dossiers</div>
-                          <div className="text-[11px] text-[#404946]/80">Hanafi, Shafi &amp; Sunni traditions</div>
-                        </div>
-                      </div>
-                      <span className="text-[10.5px] font-semibold text-[#526333] bg-[#E8E4D6] px-2 py-0.5 rounded">1,400+</span>
-                    </button>
-                    <button 
-                      onClick={() => handleNav('find-partner', { community: 'Shia' })}
-                      className="w-full text-left flex items-center justify-between p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <ShieldCheck size={16} className="text-[#0B4940] group-hover:scale-110 transition-transform" />
-                        <div>
-                          <div className="text-sm font-medium text-[#11150D]">Shia Muslim Dossiers</div>
-                          <div className="text-[11px] text-[#404946]/80">Ithna Ashari &amp; verified families</div>
-                        </div>
-                      </div>
-                      <span className="text-[10.5px] font-semibold text-[#526333] bg-[#E8E4D6] px-2 py-0.5 rounded">Verified</span>
-                    </button>
-                    <button 
-                      onClick={() => handleNav('find-partner', { community: 'Bohra' })}
-                      className="w-full text-left flex items-center justify-between p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <Lock size={16} className="text-[#0B4940] group-hover:scale-110 transition-transform" />
-                        <div>
-                          <div className="text-sm font-medium text-[#11150D]">Dawoodi Bohra Dossiers</div>
-                          <div className="text-[11px] text-[#404946]/80">Confidential family profiles</div>
-                        </div>
-                      </div>
-                      <span className="text-[10.5px] font-semibold text-[#526333] bg-[#E8E4D6] px-2 py-0.5 rounded">Confidential</span>
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* 2. Success Stories */}
-            <button 
-              onClick={() => handleNav('success-stories')}
-              className={`px-3 py-2 rounded-md transition-colors ${
-                currentPage === 'success-stories' 
-                  ? 'text-[#0B4940] font-semibold bg-[#E8E4D6]/70' 
-                  : 'hover:text-[#0B4940] hover:bg-[#E8E4D6]/40'
-              }`}
-            >
-              Success Stories
-            </button>
-
-            {/* Team Link matching faiznikah.com */}
-            <button 
-              onClick={() => handleNav('team')}
-              className={`px-3 py-2 rounded-md transition-colors ${
-                ['team', 'team-members'].includes(currentPage)
-                  ? 'text-[#0B4940] font-semibold bg-[#E8E4D6]/70' 
-                  : 'hover:text-[#0B4940] hover:bg-[#E8E4D6]/40'
-              }`}
-            >
-              Team
-            </button>
-
-            {/* 3. The Foundation Dropdown (Institutional Pillars) */}
-            <div 
-              className="relative"
-              onMouseEnter={() => handleMouseEnter('foundation')}
-              onMouseLeave={handleMouseLeave}
-            >
-              <button 
-                onClick={() => handleNav('about')}
-                className={`flex items-center gap-1.5 px-3 py-2 rounded-md transition-colors ${
-                  ['about', 'team', 'contact', 'policy'].includes(currentPage)
-                    ? 'text-[#0B4940] font-semibold bg-[#E8E4D6]/70' 
-                    : 'hover:text-[#0B4940] hover:bg-[#E8E4D6]/40'
-                }`}
-                aria-expanded={activeDropdown === 'foundation'}
-              >
-                <span>The Foundation</span>
-                <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === 'foundation' ? 'rotate-180 text-[#0B4940]' : 'text-[#526333]'}`} />
-              </button>
-
-              {activeDropdown === 'foundation' && (
-                <div className="absolute left-0 top-full pt-2 w-72 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                  <div className="bg-[#F7F4EA] border border-[#C8C5B4]/70 rounded-lg p-2.5 shadow-[0_16px_36px_-8px_rgba(17,21,13,0.14)] space-y-1">
-                    <div className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#526333]">
-                      Trust Governance &amp; Counselors
-                    </div>
-                    <button 
-                      onClick={() => handleNav('about')}
-                      className="w-full text-left flex items-start gap-2.5 p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
-                    >
-                      <Building size={16} className="text-[#0B4940] mt-0.5 group-hover:scale-110 transition-transform flex-shrink-0" />
-                      <div>
-                        <div className="text-sm font-medium text-[#11150D]">About the Foundation</div>
-                        <div className="text-[11px] text-[#404946]/80">13+ years of philanthropic service, library &amp; school</div>
-                      </div>
-                    </button>
-                    <button 
-                      onClick={() => handleNav('team')}
-                      className="w-full text-left flex items-start gap-2.5 p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
-                    >
-                      <Users size={16} className="text-[#0B4940] mt-0.5 group-hover:scale-110 transition-transform flex-shrink-0" />
-                      <div>
-                        <div className="text-sm font-medium text-[#11150D]">Meet Our Team (36 Counselors)</div>
-                        <div className="text-[11px] text-[#404946]/80">Haji Intekhab, Parveen Farash &amp; 15 regional bureaus</div>
-                      </div>
-                    </button>
-                    <button 
-                      onClick={() => handleNav('contact')}
-                      className="w-full text-left flex items-start gap-2.5 p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
-                    >
-                      <Building size={16} className="text-[#0B4940] mt-0.5 group-hover:scale-110 transition-transform flex-shrink-0" />
-                      <div>
-                        <div className="text-sm font-medium text-[#11150D]">Regional Bureaus</div>
-                        <div className="text-[11px] text-[#404946]/80">Pune HQ, Aurangabad, Sangamner, Solapur</div>
-                      </div>
-                    </button>
-                    <button 
-                      onClick={() => handleNav('policy')}
-                      className="w-full text-left flex items-start gap-2.5 p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
-                    >
-                      <ShieldCheck size={16} className="text-[#0B4940] mt-0.5 group-hover:scale-110 transition-transform flex-shrink-0" />
-                      <div>
-                        <div className="text-sm font-medium text-[#11150D]">Trust Policies &amp; Charter</div>
-                        <div className="text-[11px] text-[#404946]/80">Modesty safeguards, Wali consent &amp; zero dowry</div>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* 4. Guidance & Events Dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => handleMouseEnter('resources')}
-              onMouseLeave={handleMouseLeave}
-            >
-              <button 
-                onClick={() => handleNav('blogs')}
-                className={`flex items-center gap-1.5 px-3 py-2 rounded-md transition-colors ${
-                  ['blogs', 'events'].includes(currentPage)
-                    ? 'text-[#0B4940] font-semibold bg-[#E8E4D6]/70' 
-                    : 'hover:text-[#0B4940] hover:bg-[#E8E4D6]/40'
-                }`}
-                aria-expanded={activeDropdown === 'resources'}
-              >
-                <span>Guidance &amp; Events</span>
-                <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === 'resources' ? 'rotate-180 text-[#0B4940]' : 'text-[#526333]'}`} />
-              </button>
-
-              {activeDropdown === 'resources' && (
-                <div className="absolute left-0 top-full pt-2 w-72 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                  <div className="bg-[#F7F4EA] border border-[#C8C5B4]/70 rounded-lg p-2.5 shadow-[0_16px_36px_-8px_rgba(17,21,13,0.14)] space-y-1">
-                    <div className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#526333]">
-                      Community Knowledge
-                    </div>
-                    <button 
-                      onClick={() => handleNav('blogs')}
-                      className="w-full text-left flex items-start gap-2.5 p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
-                    >
-                      <BookOpen size={16} className="text-[#0B4940] mt-0.5 group-hover:scale-110 transition-transform flex-shrink-0" />
-                      <div>
-                        <div className="text-sm font-medium text-[#11150D]">Islamic Guidance &amp; Articles</div>
-                        <div className="text-[11px] text-[#404946]/80">Sunnah simplicity, Mahr ethics &amp; marital rights</div>
-                      </div>
-                    </button>
-                    <button 
-                      onClick={() => handleNav('events')}
-                      className="w-full text-left flex items-start gap-2.5 p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
-                    >
-                      <Calendar size={16} className="text-[#0B4940] mt-0.5 group-hover:scale-110 transition-transform flex-shrink-0" />
-                      <div>
-                        <div className="text-sm font-medium text-[#11150D]">Events &amp; Sammelans</div>
-                        <div className="text-[11px] text-[#404946]/80">In-person verified family gatherings &amp; Jalsas</div>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* 5. Membership Plan */}
-            <button 
-              onClick={() => handleNav('pricing')}
-              className={`px-3 py-2 rounded-md transition-colors ${
-                currentPage === 'pricing' 
-                  ? 'text-[#0B4940] font-semibold bg-[#E8E4D6]/70' 
-                  : 'hover:text-[#0B4940] hover:bg-[#E8E4D6]/40'
-              }`}
-            >
-              Membership
-            </button>
-
-            {/* 6. Regional Bureaus (Contact) */}
-            <button 
-              onClick={() => handleNav('contact')}
-              className={`px-3 py-2 rounded-md transition-colors ${
-                currentPage === 'contact' 
-                  ? 'text-[#0B4940] font-semibold bg-[#E8E4D6]/70' 
-                  : 'hover:text-[#0B4940] hover:bg-[#E8E4D6]/40'
-              }`}
-            >
-              Bureaus
-            </button>
-          </nav>
-
           {/* Right Action Suite */}
-          <div className="nav-cta-group flex items-center gap-2 sm:gap-3">
+          <div className="nav-cta-group flex items-center gap-2 sm:gap-3 flex-shrink-0">
             {/* Shortlisted Dossiers Button */}
             <button 
               onClick={() => handleNav('find-partner', { community: 'All' })}
@@ -519,7 +262,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Member Sign In */}
             <button 
               onClick={() => handleNav('login')}
-              className="text-xs md:text-sm font-semibold text-[#404946] hover:text-[#0B4940] hover:bg-[#E8E4D6]/50 px-3 py-2 rounded-md transition-colors hidden sm:inline-block active:scale-95"
+              className="text-xs md:text-sm font-semibold text-[#404946] hover:text-[#0B4940] hover:bg-[#E8E4D6]/50 px-3 py-2 rounded-md transition-colors hidden sm:inline-block active:scale-95 whitespace-nowrap"
             >
               Sign In
             </button>
@@ -527,9 +270,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Primary Action Button */}
             <button 
               onClick={() => handleNav('create-profile')}
-              className="bg-[#0B4940] text-[#F7F4EA] text-xs sm:text-[13px] font-semibold px-3.5 sm:px-4 py-2.5 rounded-md border border-[#0B4940] hover:bg-[#14584C] hover:border-[#14584C] transition-all shadow-[0_2px_8px_rgba(11,73,64,0.18)] flex items-center gap-1.5 active:scale-[0.98] group"
+              className="bg-[#0B4940] text-[#F7F4EA] text-xs sm:text-[13px] font-semibold px-3.5 sm:px-4 py-2.5 rounded-md border border-[#0B4940] hover:bg-[#14584C] hover:border-[#14584C] transition-all shadow-[0_2px_8px_rgba(11,73,64,0.18)] flex items-center gap-1.5 active:scale-[0.98] group whitespace-nowrap"
             >
-              <FileText size={15} className="group-hover:-translate-y-0.5 transition-transform duration-200" />
+              <FileText size={15} className="group-hover:-translate-y-0.5 transition-transform duration-200 flex-shrink-0" />
               <span className="hidden md:inline">Register Matrimonial Biodata</span>
               <span className="md:hidden">Register</span>
             </button>
@@ -542,6 +285,267 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
+          </div>
+        </div>
+
+        {/* Desktop Navigation Links Row (Directly below Logo/Brand Row) */}
+        <div className="hidden lg:block border-t border-[#C8C5B4]/40 bg-[#F7F4EA]/60 relative z-20">
+          <div className="max-w-[1280px] mx-auto px-4 md:px-8">
+            <nav className="flex items-center justify-center gap-1.5 xl:gap-3 py-1.5 text-[13.5px] font-medium text-[#404946] whitespace-nowrap">
+              
+              {/* 1. Find Partner Dropdown */}
+              <div 
+                className="desktop-nav-link relative flex-shrink-0"
+                onMouseEnter={() => handleMouseEnter('partner')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <button 
+                  onClick={() => handleNav('find-partner')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-colors relative group whitespace-nowrap ${
+                    currentPage === 'find-partner' 
+                      ? 'text-[#0B4940] font-semibold bg-[#E8E4D6]/70' 
+                      : 'hover:text-[#0B4940] hover:bg-[#E8E4D6]/40'
+                  }`}
+                  aria-expanded={activeDropdown === 'partner'}
+                >
+                  <span className="whitespace-nowrap">Find Partner</span>
+                  <ChevronDown size={14} className={`transition-transform duration-200 flex-shrink-0 ${activeDropdown === 'partner' ? 'rotate-180 text-[#0B4940]' : 'text-[#526333]'}`} />
+                  {currentPage === 'find-partner' && (
+                    <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#0B4940] rounded-full"></span>
+                  )}
+                </button>
+
+                {activeDropdown === 'partner' && (
+                  <div className="absolute left-0 top-full pt-2 w-72 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                    <div className="bg-[#F7F4EA] border border-[#C8C5B4]/70 rounded-lg p-2.5 shadow-[0_16px_36px_-8px_rgba(17,21,13,0.14)] space-y-1">
+                      <div className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#526333]">
+                        Browse Matrimonial Dossiers
+                      </div>
+                      <button 
+                        onClick={() => handleNav('find-partner', { community: 'All' })}
+                        className="w-full text-left flex items-center justify-between p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <Users size={16} className="text-[#0B4940] group-hover:scale-110 transition-transform flex-shrink-0" />
+                          <div>
+                            <div className="text-sm font-medium text-[#11150D]">All Verified Dossiers</div>
+                            <div className="text-[11px] text-[#404946]/80">Across Maharashtra &amp; Pan-India</div>
+                          </div>
+                        </div>
+                        <span className="text-[10.5px] font-semibold text-[#526333] bg-[#E8E4D6] px-2 py-0.5 rounded flex-shrink-0">2,000+</span>
+                      </button>
+                      <button 
+                        onClick={() => handleNav('find-partner', { community: 'Sunni' })}
+                        className="w-full text-left flex items-center justify-between p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <UserCheck size={16} className="text-[#0B4940] group-hover:scale-110 transition-transform flex-shrink-0" />
+                          <div>
+                            <div className="text-sm font-medium text-[#11150D]">Sunni Muslim Dossiers</div>
+                            <div className="text-[11px] text-[#404946]/80">Hanafi, Shafi &amp; Sunni traditions</div>
+                          </div>
+                        </div>
+                        <span className="text-[10.5px] font-semibold text-[#526333] bg-[#E8E4D6] px-2 py-0.5 rounded flex-shrink-0">1,400+</span>
+                      </button>
+                      <button 
+                        onClick={() => handleNav('find-partner', { community: 'Shia' })}
+                        className="w-full text-left flex items-center justify-between p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <ShieldCheck size={16} className="text-[#0B4940] group-hover:scale-110 transition-transform flex-shrink-0" />
+                          <div>
+                            <div className="text-sm font-medium text-[#11150D]">Shia Muslim Dossiers</div>
+                            <div className="text-[11px] text-[#404946]/80">Ithna Ashari &amp; verified families</div>
+                          </div>
+                        </div>
+                        <span className="text-[10.5px] font-semibold text-[#526333] bg-[#E8E4D6] px-2 py-0.5 rounded flex-shrink-0">Verified</span>
+                      </button>
+                      <button 
+                        onClick={() => handleNav('find-partner', { community: 'Bohra' })}
+                        className="w-full text-left flex items-center justify-between p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <Lock size={16} className="text-[#0B4940] group-hover:scale-110 transition-transform flex-shrink-0" />
+                          <div>
+                            <div className="text-sm font-medium text-[#11150D]">Dawoodi Bohra Dossiers</div>
+                            <div className="text-[11px] text-[#404946]/80">Confidential family profiles</div>
+                          </div>
+                        </div>
+                        <span className="text-[10.5px] font-semibold text-[#526333] bg-[#E8E4D6] px-2 py-0.5 rounded flex-shrink-0">Confidential</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* 2. Success Stories */}
+              <button 
+                onClick={() => handleNav('success-stories')}
+                className={`desktop-nav-link px-3 py-1.5 rounded-md transition-colors whitespace-nowrap flex-shrink-0 ${
+                  currentPage === 'success-stories' 
+                    ? 'text-[#0B4940] font-semibold bg-[#E8E4D6]/70' 
+                    : 'hover:text-[#0B4940] hover:bg-[#E8E4D6]/40'
+                }`}
+              >
+                Success Stories
+              </button>
+
+              {/* 3. Team */}
+              <button 
+                onClick={() => handleNav('team')}
+                className={`desktop-nav-link px-3 py-1.5 rounded-md transition-colors whitespace-nowrap flex-shrink-0 ${
+                  ['team', 'team-members'].includes(currentPage)
+                    ? 'text-[#0B4940] font-semibold bg-[#E8E4D6]/70' 
+                    : 'hover:text-[#0B4940] hover:bg-[#E8E4D6]/40'
+                }`}
+              >
+                Team
+              </button>
+
+              {/* 4. The Foundation Dropdown */}
+              <div 
+                className="desktop-nav-link relative flex-shrink-0"
+                onMouseEnter={() => handleMouseEnter('foundation')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <button 
+                  onClick={() => handleNav('about')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-colors whitespace-nowrap ${
+                    ['about', 'team', 'contact', 'policy'].includes(currentPage)
+                      ? 'text-[#0B4940] font-semibold bg-[#E8E4D6]/70' 
+                      : 'hover:text-[#0B4940] hover:bg-[#E8E4D6]/40'
+                  }`}
+                  aria-expanded={activeDropdown === 'foundation'}
+                >
+                  <span className="whitespace-nowrap">The Foundation</span>
+                  <ChevronDown size={14} className={`transition-transform duration-200 flex-shrink-0 ${activeDropdown === 'foundation' ? 'rotate-180 text-[#0B4940]' : 'text-[#526333]'}`} />
+                </button>
+
+                {activeDropdown === 'foundation' && (
+                  <div className="absolute left-0 top-full pt-2 w-72 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                    <div className="bg-[#F7F4EA] border border-[#C8C5B4]/70 rounded-lg p-2.5 shadow-[0_16px_36px_-8px_rgba(17,21,13,0.14)] space-y-1">
+                      <div className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#526333]">
+                        Trust Governance &amp; Counselors
+                      </div>
+                      <button 
+                        onClick={() => handleNav('about')}
+                        className="w-full text-left flex items-start gap-2.5 p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
+                      >
+                        <Building size={16} className="text-[#0B4940] mt-0.5 group-hover:scale-110 transition-transform flex-shrink-0" />
+                        <div>
+                          <div className="text-sm font-medium text-[#11150D]">About the Foundation</div>
+                          <div className="text-[11px] text-[#404946]/80">13+ years of philanthropic service, library &amp; school</div>
+                        </div>
+                      </button>
+                      <button 
+                        onClick={() => handleNav('team')}
+                        className="w-full text-left flex items-start gap-2.5 p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
+                      >
+                        <Users size={16} className="text-[#0B4940] mt-0.5 group-hover:scale-110 transition-transform flex-shrink-0" />
+                        <div>
+                          <div className="text-sm font-medium text-[#11150D]">Meet Our Team (36 Counselors)</div>
+                          <div className="text-[11px] text-[#404946]/80">Haji Intekhab, Parveen Farash &amp; 15 regional bureaus</div>
+                        </div>
+                      </button>
+                      <button 
+                        onClick={() => handleNav('contact')}
+                        className="w-full text-left flex items-start gap-2.5 p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
+                      >
+                        <Building size={16} className="text-[#0B4940] mt-0.5 group-hover:scale-110 transition-transform flex-shrink-0" />
+                        <div>
+                          <div className="text-sm font-medium text-[#11150D]">Regional Bureaus</div>
+                          <div className="text-[11px] text-[#404946]/80">Pune HQ, Aurangabad, Sangamner, Solapur</div>
+                        </div>
+                      </button>
+                      <button 
+                        onClick={() => handleNav('policy')}
+                        className="w-full text-left flex items-start gap-2.5 p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
+                      >
+                        <ShieldCheck size={16} className="text-[#0B4940] mt-0.5 group-hover:scale-110 transition-transform flex-shrink-0" />
+                        <div>
+                          <div className="text-sm font-medium text-[#11150D]">Trust Policies &amp; Charter</div>
+                          <div className="text-[11px] text-[#404946]/80">Modesty safeguards, Wali consent &amp; zero dowry</div>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* 5. Guidance & Events Dropdown */}
+              <div 
+                className="desktop-nav-link relative flex-shrink-0"
+                onMouseEnter={() => handleMouseEnter('resources')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <button 
+                  onClick={() => handleNav('blogs')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-colors whitespace-nowrap ${
+                    ['blogs', 'events'].includes(currentPage)
+                      ? 'text-[#0B4940] font-semibold bg-[#E8E4D6]/70' 
+                      : 'hover:text-[#0B4940] hover:bg-[#E8E4D6]/40'
+                  }`}
+                  aria-expanded={activeDropdown === 'resources'}
+                >
+                  <span className="whitespace-nowrap">Guidance &amp; Events</span>
+                  <ChevronDown size={14} className={`transition-transform duration-200 flex-shrink-0 ${activeDropdown === 'resources' ? 'rotate-180 text-[#0B4940]' : 'text-[#526333]'}`} />
+                </button>
+
+                {activeDropdown === 'resources' && (
+                  <div className="absolute left-0 top-full pt-2 w-72 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                    <div className="bg-[#F7F4EA] border border-[#C8C5B4]/70 rounded-lg p-2.5 shadow-[0_16px_36px_-8px_rgba(17,21,13,0.14)] space-y-1">
+                      <div className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#526333]">
+                        Community Knowledge
+                      </div>
+                      <button 
+                        onClick={() => handleNav('blogs')}
+                        className="w-full text-left flex items-start gap-2.5 p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
+                      >
+                        <BookOpen size={16} className="text-[#0B4940] mt-0.5 group-hover:scale-110 transition-transform flex-shrink-0" />
+                        <div>
+                          <div className="text-sm font-medium text-[#11150D]">Islamic Guidance &amp; Articles</div>
+                          <div className="text-[11px] text-[#404946]/80">Sunnah simplicity, Mahr ethics &amp; marital rights</div>
+                        </div>
+                      </button>
+                      <button 
+                        onClick={() => handleNav('events')}
+                        className="w-full text-left flex items-start gap-2.5 p-2 rounded-md hover:bg-[#E8E4D6]/70 transition-colors group"
+                      >
+                        <Calendar size={16} className="text-[#0B4940] mt-0.5 group-hover:scale-110 transition-transform flex-shrink-0" />
+                        <div>
+                          <div className="text-sm font-medium text-[#11150D]">Events &amp; Sammelans</div>
+                          <div className="text-[11px] text-[#404946]/80">In-person verified family gatherings &amp; Jalsas</div>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* 6. Membership Plan */}
+              <button 
+                onClick={() => handleNav('pricing')}
+                className={`desktop-nav-link px-3 py-1.5 rounded-md transition-colors whitespace-nowrap flex-shrink-0 ${
+                  currentPage === 'pricing' 
+                    ? 'text-[#0B4940] font-semibold bg-[#E8E4D6]/70' 
+                    : 'hover:text-[#0B4940] hover:bg-[#E8E4D6]/40'
+                }`}
+              >
+                Membership
+              </button>
+
+              {/* 7. Regional Bureaus (Contact) */}
+              <button 
+                onClick={() => handleNav('contact')}
+                className={`desktop-nav-link px-3 py-1.5 rounded-md transition-colors whitespace-nowrap flex-shrink-0 ${
+                  currentPage === 'contact' 
+                    ? 'text-[#0B4940] font-semibold bg-[#E8E4D6]/70' 
+                    : 'hover:text-[#0B4940] hover:bg-[#E8E4D6]/40'
+                }`}
+              >
+                Bureaus
+              </button>
+            </nav>
           </div>
         </div>
 

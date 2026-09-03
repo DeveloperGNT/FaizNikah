@@ -20,7 +20,7 @@ import { Profile } from '../types';
 
 interface ProfileModalProps {
   profile: Profile | null;
-  isOpen: boolean;
+  isOpen?: boolean;
   onClose: () => void;
   isShortlisted: boolean;
   onToggleShortlist: (profileId: string) => void;
@@ -29,7 +29,7 @@ interface ProfileModalProps {
 
 export const ProfileModal: React.FC<ProfileModalProps> = ({
   profile,
-  isOpen,
+  isOpen = true,
   onClose,
   isShortlisted,
   onToggleShortlist,
@@ -41,9 +41,12 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   if (!isOpen || !profile) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#11150D]/60 backdrop-blur-sm overflow-y-auto">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#11150D]/60 backdrop-blur-sm overflow-y-auto cursor-pointer"
+      onClick={onClose}
+    >
       <div 
-        className="relative w-full max-w-3xl bg-[#F7F4EA] border border-[#C8C5B4] rounded-lg shadow-[0_20px_50px_rgba(17,21,13,0.25)] overflow-hidden my-8 animate-in fade-in zoom-in-95 duration-200"
+        className="relative w-full max-w-3xl bg-[#F7F4EA] border border-[#C8C5B4] rounded-lg shadow-[0_20px_50px_rgba(17,21,13,0.25)] overflow-hidden my-8 animate-in fade-in zoom-in-95 duration-200 cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Header Bar */}
