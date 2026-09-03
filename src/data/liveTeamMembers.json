@@ -1,0 +1,254 @@
+[
+  {
+    "id": "1",
+    "name": "Intekhab Farash",
+    "location": "Pune",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/e.jpg",
+    "imageUrl": "/team/member_1.jpg"
+  },
+  {
+    "id": "2",
+    "name": "Parveen Farash",
+    "location": "Pune",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/ho.jpg",
+    "imageUrl": "/team/member_2.jpg"
+  },
+  {
+    "id": "3",
+    "name": "Nasir bhai",
+    "location": "Pune",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/WhatsApp_Image_2021-09-28_at_9.03.02_PM.jpeg",
+    "imageUrl": "/team/member_3.jpeg"
+  },
+  {
+    "id": "4",
+    "name": "Nawaz Sayyed Sahab",
+    "location": "Pune",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/pp.jpg",
+    "imageUrl": "/team/member_4.jpg"
+  },
+  {
+    "id": "5",
+    "name": "Matin Bagwan",
+    "location": "Solapur",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/WhatsApp_Image_2021-10-06_at_6.02.12_PM.jpeg",
+    "imageUrl": "/team/member_5.jpeg"
+  },
+  {
+    "id": "6",
+    "name": "Abdul Qauum Dandoti",
+    "location": "Solapur",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/WhatsApp_Image_2021-10-06_at_6.07.16_PM.jpeg",
+    "imageUrl": "/team/member_6.jpeg"
+  },
+  {
+    "id": "7",
+    "name": "Shagufta Dandoti",
+    "location": "Solapur",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/WhatsApp_Image_2021-10-06_at_6.09.50_PM.jpeg",
+    "imageUrl": "/team/member_7.jpeg"
+  },
+  {
+    "id": "8",
+    "name": "Farzana Shamim",
+    "location": "Aurangabad",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/WhatsApp_Image_2021-10-06_at_6.11.10_PM.jpeg",
+    "imageUrl": "/team/member_8.jpeg"
+  },
+  {
+    "id": "9",
+    "name": "Naznin Azgar Shaikh",
+    "location": "Parvati (Pune)",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/WhatsApp_Image_2021-10-06_at_6.15.53_PM.jpeg",
+    "imageUrl": "/team/member_9.jpeg"
+  },
+  {
+    "id": "10",
+    "name": "Salim Shaikh",
+    "location": "Pune",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/WhatsApp_Image_2021-10-06_at_6.21.52_PM.jpeg",
+    "imageUrl": "/team/member_10.jpeg"
+  },
+  {
+    "id": "11",
+    "name": "Haji Arif Bujjar",
+    "location": "Solapur",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/WhatsApp_Image_2021-10-06_at_6.24.04_PM.jpeg",
+    "imageUrl": "/team/member_11.jpeg"
+  },
+  {
+    "id": "12",
+    "name": "Mansur Deshmukh",
+    "location": "Pune",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/user.png",
+    "imageUrl": "/team/member_12.png"
+  },
+  {
+    "id": "13",
+    "name": "Junaid Tehsildar",
+    "location": "Pune",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/ju.PNG",
+    "imageUrl": "/team/member_13.png"
+  },
+  {
+    "id": "14",
+    "name": "Wasim Shaikh",
+    "location": "Solapur",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/IMG-20211013-WA0057.jpg",
+    "imageUrl": "/team/member_14.jpg"
+  },
+  {
+    "id": "15",
+    "name": "Javed Shaikh",
+    "location": "Solapur",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/ja.jpg",
+    "imageUrl": "/team/member_15.jpg"
+  },
+  {
+    "id": "16",
+    "name": "Nazir Mulla",
+    "location": "Bombay",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/ko.jpg",
+    "imageUrl": "/team/member_16.jpg"
+  },
+  {
+    "id": "17",
+    "name": "Nilofar Shaikh",
+    "location": "Mahad Bombay",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/ni.jpg",
+    "imageUrl": "/team/member_17.jpg"
+  },
+  {
+    "id": "18",
+    "name": "Haji Mubin Suleman",
+    "location": "Sangamner",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/mubin.jpg",
+    "imageUrl": "/team/member_18.jpg"
+  },
+  {
+    "id": "19",
+    "name": "Raaza Khan",
+    "location": "Pune",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/raza.jpg",
+    "imageUrl": "/team/member_19.jpg"
+  },
+  {
+    "id": "20",
+    "name": "Sameer Shaikh",
+    "location": "Pipri-Chinchawad",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/54881e34-39c0-45e8-8b35-43912d87e8be.jpg",
+    "imageUrl": "/team/member_20.jpg"
+  },
+  {
+    "id": "21",
+    "name": "Sardar Amir Shaikh",
+    "location": "Nigdi",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/download_vPeczxA.png",
+    "imageUrl": "/team/member_21.png"
+  },
+  {
+    "id": "22",
+    "name": "Ayyaz Bhi Shaikh",
+    "location": "Pune",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/download_jf1WpVy.png",
+    "imageUrl": "/team/member_22.png"
+  },
+  {
+    "id": "23",
+    "name": "Haji Abdul Salam Patel",
+    "location": "Nagpur",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/1_Rjr3rMi.jpg",
+    "imageUrl": "/team/member_23.jpg"
+  },
+  {
+    "id": "24",
+    "name": "Farid Shaikh",
+    "location": "Solapur",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/8f09d2ba-1b57-44d4-bb89-5a69b079e4f8.jpg",
+    "imageUrl": "/team/member_24.jpg"
+  },
+  {
+    "id": "25",
+    "name": "Prof.Zaheer Ahamed Pathan",
+    "location": "Pune",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/029d153e-e3f0-4447-a066-ab6857d856ba.jpg",
+    "imageUrl": "/team/member_25.jpg"
+  },
+  {
+    "id": "26",
+    "name": "Nurul Hoda Ansari",
+    "location": "Pune",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/kkk.jpg",
+    "imageUrl": "/team/member_26.jpg"
+  },
+  {
+    "id": "27",
+    "name": "Mr. Shahid Tambol",
+    "location": "Miraj",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/f6e63059-8125-4c6d-91f2-b36915f1f760.jpg",
+    "imageUrl": "/team/member_27.jpg"
+  },
+  {
+    "id": "28",
+    "name": "Sumaiya Firdos",
+    "location": "Akola",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/arab-muslim-woman-face-vector-4793429.jpg",
+    "imageUrl": "/team/member_28.jpg"
+  },
+  {
+    "id": "29",
+    "name": "Farooque Tarkash",
+    "location": "Pune",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/9676c168-6722-4f82-a52b-42682b26733c.jpg",
+    "imageUrl": "/team/member_29.jpg"
+  },
+  {
+    "id": "30",
+    "name": "Mohd. Shafi A. Kalim Mouiawi",
+    "location": "Mumbai",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/ac07591f-ba00-46ec-9caf-81f1a745b74e.jpg",
+    "imageUrl": "/team/user.png"
+  },
+  {
+    "id": "31",
+    "name": "Amir M. Shaikh",
+    "location": "Solapure",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/1001151373.jpg",
+    "imageUrl": "/team/user.png"
+  },
+  {
+    "id": "32",
+    "name": "Ayyaz bhai",
+    "location": "Pune",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/1001918085.jpg",
+    "imageUrl": "/team/member_32.jpg"
+  },
+  {
+    "id": "33",
+    "name": "Safura Dilawar Khan",
+    "location": "Pune",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/111.jpg",
+    "imageUrl": "/team/member_33.jpg"
+  },
+  {
+    "id": "34",
+    "name": "Nilofar S. Shaikh",
+    "location": "Kolapur",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/WhatsApp_Image_2025-01-26_at_10.58.16_AM.jpeg",
+    "imageUrl": "/team/member_34.jpeg"
+  },
+  {
+    "id": "35",
+    "name": "Yasmin Sayyed",
+    "location": "Surat",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/2.jpg",
+    "imageUrl": "/team/member_35.jpg"
+  },
+  {
+    "id": "36",
+    "name": "Sayyed Maheboob Kadri",
+    "location": "Solapur",
+    "originalUrl": "https://faiznikah.com/media/team_members/photos/1000430989.jpg",
+    "imageUrl": "/team/user.png"
+  }
+]

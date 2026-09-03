@@ -1,0 +1,6 @@
+{
+  "name": "FaizNikah",
+  "description": "Premium Islamic Matrimonial Sanctuary by Haji Mehmed Isaac Farash Foundation Pune. Sacred unions solemnized with Sunnah simplicity, dignity, and trust.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
